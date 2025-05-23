@@ -90,6 +90,14 @@ export default function RigJBDBuilder() {
         <Input label="Add Personnel" value={workerName} onChange={(e) => setWorkerName(e.target.value)} />
         <Button onClick={handleAddWorker}>Add</Button>
       </div>
+      <div className="text-sm space-y-1">
+        <p className="font-bold">Personnel List</p>
+        <ul>
+          {workers.map((w, i) => (
+            <li key={i}>{i + 1}. {w}</li>
+          ))}
+        </ul>
+      </div>
       <div className="flex space-x-4 h-[300px]">
         <div className="w-[300px] h-full border-2 border-black relative">
           <p className="text-sm font-bold p-1">Place personnel on the diagram</p>
@@ -144,7 +152,9 @@ export default function RigJBDBuilder() {
       </div>
       <ul className="space-y-1 text-sm">
         {tasks.map((t, i) => (
-          <li key={i} className="border p-2 rounded">Step: {t.step} | Persons: {t.persons.join(', ')}</li>
+          <li key={i} className="border p-2 rounded">
+            {i + 1}. Step: {t.step} | Persons: {t.persons.join(', ')}
+          </li>
         ))}
       </ul>
       <Button onClick={handleGeneratePDF}>Export PDF Preview</Button>
